@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Fruitshop.Application;
+using Fruitshop.Domain;
 
 namespace Fruitshop.Presentation
 {
@@ -18,15 +19,40 @@ namespace Fruitshop.Presentation
     /// </summary>
     public partial class OverviewWindow : Window
     {
-        private FruitService fruitService;
+        private FruitService _fruitService;
 
         public OverviewWindow()
         {
             InitializeComponent();
 
-            fruitService = new FruitService();
+            _fruitService = new FruitService();
 
-            fruitListBox.ItemsSource = fruitService.GetAllFruits();
+            RefreshListBox();
+        }
+
+        private void OnDelete(object sender, RoutedEventArgs e)
+        {
+            if(fruitListBox.SelectedItem is Fruit selectedFruit)
+            {
+                _fruitService.Delete(selectedFruit);
+                RefreshListBox();
+            }
+        }
+
+        private void OnCreate(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RefreshListBox()
+        {
+            fruitListBox.ItemsSource = _fruitService.GetAllFruits();
+
+        }
+
+        private void OnListBoxDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }

@@ -31,5 +31,31 @@ namespace Fruitshop.Infrastructure
             }
         }
 
+        public void Add(Fruit fruit)
+        {
+            string sql = """
+                INSERT INTO Fruits (Id, Name, Color, Season)
+                VALUES(@id, @name, @color, @season)
+                """;
+
+            using (SqlConnection sqlConnection = new SqlConnection(CONNECTIONSTRING))
+            {
+                sqlConnection.Execute(sql, fruit);
+            }
+        }
+        
+        public void Update(Fruit fruit)
+        {
+            string sql = """
+                UPDATE Fruits
+                SET Name = @name, Color = @color, Season = @season
+                WHERE Id = @id
+                """;
+
+            using (SqlConnection sqlConnection = new SqlConnection(CONNECTIONSTRING))
+            {
+                sqlConnection.Execute(sql, new { name = fruit.Name, color = fruit.Color, season = fruit.Season, id = fruit.Id });
+            }
+        }
     }
 }
