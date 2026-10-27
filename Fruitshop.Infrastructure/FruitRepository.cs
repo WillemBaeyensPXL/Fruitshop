@@ -31,6 +31,5 @@ namespace Fruitshop.Infrastructure
             }
         }
 
-        public void 
     }
 }
