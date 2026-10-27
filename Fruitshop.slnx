@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Fruitshop.Application/Fruitshop.Application.csproj" />
+  <Project Path="Fruitshop.Domain/Fruitshop.Domain.csproj" />
+  <Project Path="Fruitshop.Infrastructure/Fruitshop.Infrastructure.csproj" />
+  <Project Path="Fruitshop.Presentation/Fruitshop.Presentation.csproj" />
+</Solution>
