@@ -38,6 +38,8 @@ namespace Fruitshop.Infrastructure
                 VALUES(@id, @name, @color, @season)
                 """;
 
+            fruit.Id = GetNextId();
+
             using (SqlConnection sqlConnection = new SqlConnection(CONNECTIONSTRING))
             {
                 sqlConnection.Execute(sql, fruit);
@@ -55,6 +57,16 @@ namespace Fruitshop.Infrastructure
             using (SqlConnection sqlConnection = new SqlConnection(CONNECTIONSTRING))
             {
                 sqlConnection.Execute(sql, new { name = fruit.Name, color = fruit.Color, season = fruit.Season, id = fruit.Id });
+            }
+        }
+
+        private int GetNextId()
+        {
+            string sql = "SELECT MAX(Id) from Fruits";
+
+            using (SqlConnection sqlConnection = new SqlConnection(CONNECTIONSTRING))
+            {
+                return sqlConnection.ExecuteScalar<int>(sql)+1;
             }
         }
     }

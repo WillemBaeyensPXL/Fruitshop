@@ -41,7 +41,8 @@ namespace Fruitshop.Presentation
 
         private void OnCreate(object sender, RoutedEventArgs e)
         {
-
+            _fruitService.AddFruit();
+            RefreshListBox();
         }
 
         private void RefreshListBox()

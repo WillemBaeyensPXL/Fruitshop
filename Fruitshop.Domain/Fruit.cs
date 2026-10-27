@@ -13,7 +13,7 @@ namespace Fruitshop.Domain
 
         public override string ToString()
         {
-            return $"{Name} {Color} {Season}";
+            return $"{Id} {Name} {Color} {Season}";
         }
     }
 }

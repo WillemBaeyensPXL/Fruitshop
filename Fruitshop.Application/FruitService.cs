@@ -29,5 +29,16 @@ namespace Fruitshop.Application
         {
             repo.Update(fruit);
         }
+
+        public void AddFruit()
+        {
+            Fruit newFruit = new Fruit()
+            {
+                Name = "Test",
+                Season = "Herfst",
+                Color = "Zwart"
+            };
+            repo.Add(newFruit);
+        }
     }
 }
